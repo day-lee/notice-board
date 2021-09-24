@@ -1,0 +1,63 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block css %}
+{% endblock css %}
+
+{% block content %}
+    <h2> Post </h2>
+     <form name="jsform" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="editor">
+                <p>title <input type="text" name="title_text" id= "title_text" size="50" placeholder="Enter title" required=""/>
+                    <span id="span_title"></span></p>
+                <textarea name="body_text" id="body_text" cols="50" rows="10" placeholder="Enter content"></textarea>
+
+                <br><br>
+                <input type="button" id="hw" value="Hello world" />
+            </div>
+
+            <div class="submit">
+                <input type="submit" name="btnsubmit"  value="submit" onclick="return validate()"/>
+            </div>
+     </form>
+    <style type="text/css">
+    span {
+        color:red;
+    }
+    </style>
+
+    <script type="text/javascript">
+        function validate() {
+           // alert("hi");
+            var title = document.getElementById("title_text").value;
+            var body = document.getElementById("body_text").value;
+
+            if(title == "")
+            {
+                document.getElementById("span_title").innerHTML="Invalid title"
+                //alert("Empty title");
+                return false;
+
+            }
+            if(body == "")
+            {
+                alert("Emtpy content");
+                return false;
+            }
+        }
+
+
+
+        var hw = document.getElementById('hw');
+        hw.addEventListener('click', function(){
+            alert('Hello world');
+        })
+    </script>
+
+
+
+
+
+
+{% endblock content %}

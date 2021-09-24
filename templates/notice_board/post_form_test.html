@@ -1,0 +1,66 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h2> Post </h2>
+        <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+            <div class="editor">
+                <input type="button" id="hw" value="Hello world"/>
+                 <br><br><br>
+                <p>title <input type="text" name="title_text" maxlength="100" placeholder="Enter title"
+                                required="" id="title_text"/><span id="span_title"></span></p>
+
+                <p>author <select name="author" required="" id="id_author">
+                <option value="" selected="">---------</option>
+                <option value="1">dayeon-board</option>
+                </select></p>
+                <textarea name="body_text" id="body_text" cols="50" rows="10" placeholder="Enter content" required=""></textarea>
+                </textarea>
+                <p><input type="file" name="file" id="id_file"></p>
+            </div>
+            <div class="submit">
+                <input type="submit" value="post">
+                <input type="submit" name="btnsubmit"  value="js submit" onclick="return validate()"/>
+            </div>
+        </form>
+        <div class="btn_back">
+            <br>
+            <a href="/notice-board/">Return to post list</a>
+        </div>
+</div>
+
+<style type="text/css">
+    span {
+        color:red;
+    }
+    </style>
+
+    <script type="text/javascript">
+        function validate() {
+           // alert("hi");
+            var title = document.getElementById("title_text").value;
+            var body = document.getElementById("body_text").value;
+
+            if(title == "")
+            {
+                document.getElementById("span_title").innerHTML=" Invalid title"
+                //alert("Empty title");
+                return false;
+
+            }
+            if(body == "")
+            {
+                alert("Emtpy content");
+                return false;
+            }
+        }
+
+        var hw = document.getElementById('hw');
+        hw.addEventListener('click', function(){
+            alert('Hello world');
+        })
+    </script>
+
+{% endblock content %}
