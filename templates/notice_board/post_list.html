@@ -6,7 +6,7 @@
 {% endblock css %}
 
 {% block content %}
-    {# post list #}
+    <!-- post list -->
     <div class="btn_post">
         <h2>Post List | <a href="{% url 'board:post-create'%}">Post</a> </h2>
         <hr>
@@ -40,10 +40,34 @@
                 <a href="?page={{page_obj.paginator.num_pages}}" class="last">last</a>
             {% endif %}
         </div>
+        <br>
 
     {% else %}
         <div class="blank">
             <p>No post yet.</p>
         </div>
     {% endif %}
+
+<!-- FILTER -->
+    <div class="post-filter"></div>
+    <form method="get" class="form-style">
+        <div class="bytitle">
+            <label for="id_title__icontains">by Title</label>
+            <input type="text" name="title__icontains" class="form-control is-valid form-style" placeholder="search by title" title="" id="id_title__icontains">
+        </div>
+
+        <div class="bybody">
+            <label for="id_body__icontains">by content</label>
+            <input type="text" name="body__icontains" class="form-control is-valid" placeholder="search by content" title="" id="id_body__icontains">
+        </div>
+
+            <br>
+            <div class="button">
+                <input type="submit" name="btnsubmit"  value="search">
+                <input type="reset" value="reset">
+                <a href="{% url 'board:notice-board' %}">Back to list</a>
+            </div>
+    </form>
+</div>
+
 {% endblock content %}
