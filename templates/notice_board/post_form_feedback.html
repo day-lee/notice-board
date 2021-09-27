@@ -1,0 +1,60 @@
+{% extends './base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2> POST feedback ver</h2>
+        <form method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+            <div class="editor">
+                 <br>
+{# FORM FIELDS  #}
+                <p>title <input type="text" name="title" maxlength="100" placeholder="Enter title" required="required" id="title">
+                        <span id="span_title"></span></p>
+
+                <p>author <select name="author" required="" id="author">
+                <option value="" selected="">---------</option>
+                <option value="1">dayeon-board</option>
+                </select> <span id="span_author"></span></p></p>
+                <p><textarea name="body" cols="40" rows="10" required="" id="body" placeholder="Enter content"></textarea></p>
+                <p><input type="file" name="file" id="file"></p>
+            </div>
+{# SUBMIT BUTTON#}
+            <div class="submit">
+
+{#                <input type="submit" value="post">#}
+                <input type="reset" value="reset">
+                <input type="submit" name="btnsubmit"  value="submit" />
+            </div>
+        </form>
+    <div class="btn_back">
+        <br><br>
+        <a href="/notice-board/">Return to post list</a>
+    </div>
+</div>
+
+{# CSS #}
+    <style type="text/css">
+    span {
+        color:red;
+    }
+    </style>
+
+{# JAVA SCRIPT #}
+    <script type="text/javascript">
+    {# FORM FIELDS#}
+    window.addEventListener("load", function(){
+    let form = document.querySelector("form");
+    form.addEventListener("submit", function(event) {
+    let title = document.querySelector("input[name=title]");
+
+    if(title.value === ""){
+        alert("타이틀 입력");
+        title.focus();
+        return false;
+    }
+    });
+    });
+
+    </script>
+
+{% endblock content %}

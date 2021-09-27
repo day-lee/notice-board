@@ -6,10 +6,9 @@
         <form method="post" enctype="multipart/form-data">
          {% csrf_token %}
             <div class="editor">
-                 <input type="button" id="hw" value="Hello world"/>
-                 <br><br><br>
+                 <br>
 {# FORM FIELDS  #}
-                <p>title <input type="text" name="title" maxlength="100" placeholder="Enter title" required="" id="id_title">
+                <p>title <input type="text" name="title" maxlength="100" placeholder="Enter title" required="required" id="id_title">
                         <span id="span_title"></span></p>
 
                 <p>author <select name="author" required="" id="id_author">
@@ -21,8 +20,10 @@
             </div>
 {# SUBMIT BUTTON#}
             <div class="submit">
-                <input type="submit" value="post">
-                <input type="submit" name="btnsubmit"  value="submit (JS)" onclick="return validate()"/>
+
+{#                <input type="submit" value="post">#}
+                <input type="reset" value="reset">
+                <input type="submit" name="btnsubmit"  value="submit" onclick="return validate()"/>
             </div>
         </form>
     <div class="btn_back">
@@ -68,12 +69,6 @@
                 return false;
             }
         }
-
-    {#HELLO WORLD#}
-    var hw = document.getElementById('hw');
-        hw.addEventListener('click', function(){
-            alert('Hello world');
-        })
 
     </script>
 
